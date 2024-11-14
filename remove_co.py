@@ -1,7 +1,7 @@
 from pathlib import Path
 
 def remove_python_comments():
-    filename = input("Enter the Python file path (absolute or relative): ")
+    filename = input("Enter PY file path: ")
     file_path = Path(filename).expanduser().resolve()
     if not file_path.is_file():
         print(f"File not found: {file_path}")
@@ -51,11 +51,10 @@ def remove_python_comments():
             cleaned_lines.append(line)
             prev_line_empty = False
     final_output = '\n'.join(cleaned_lines)
-    output_filename = f"cleaned_{file_path.name}"
+    output_filename = f"{file_path.name}_cleaned"
     with open(file_path.parent / output_filename, 'w') as output_file:
         output_file.write(final_output)
     print(f"Saved as {output_filename}")
 
 if __name__ == "__main__":
     remove_python_comments()
-
